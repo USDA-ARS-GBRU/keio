@@ -156,6 +156,7 @@ def cluster_db(rbfasta, threads=1, cluster_id=0.9, min_seqlength=10):
 
 
 def mapR2clusterdb(fastafile, centroid_representative_fasta,cluster_id=0.9, min_seqlength=20):
+    """Map reads and the cluster centroid information"""
     try:
         uc_map = fastafile.split(".")[0] + ".cluster_table_mapping.uc"
         readfile = fastafile
@@ -175,8 +176,7 @@ def mapR2clusterdb(fastafile, centroid_representative_fasta,cluster_id=0.9, min_
     except FileNotFoundError as f:
         print(str(f))
 
-
-### apply to actual data
+# use if NMSLIB
 # index the reference list
 def create_index(strings):
     index = nmslib.init(space='leven',
@@ -262,10 +262,11 @@ rbdict = get_randombarcode("merged.fasta", datplus_filter)
 ## get random barcode as fasta file
 randombarcode_fasta(rbdict)
 
-####
+#Runs Vsearch clustering to create a FASTA file of non-redundant sequences.
+# Selects the most abundant sequence as the centroid
 cluster_db("rb.fasta", threads=8, cluster_id=0.9, min_seqlength=20)
 
-###
+### Combine information from cluster_db and fasta file
 mapR2clusterdb("rb.fasta","rb_centroid_representative_fasta",cluster_id=0.9, min_seqlength=20)
 
 
@@ -281,12 +282,15 @@ with open("rb.cluster_table_mapping.uc", "r")as f:
             if size >= 1:
                 filter_uc.append([rb_id,cluster_id,size])
 
-###
+### Convert list to dataframe
 df_filter_uc = pd.DataFrame(filter_uc, columns=["SeqID","ClusterID","ClusterSize"])
 
+# Convert randombacode dict to dataframe
 df_rbdict = pd.DataFrame.from_dict(rbdict,orient='index')
+# reindex such that SeqID is first column, which we will be using a hook to merge two data frames.
 df_rbdict_ri = df_rbdict.rename_axis('SeqID').reset_index()
 
+# Merge df_filter_uc and random barcode dataframes
 df_merge = pd.merge(df_rbdict_ri, df_filter_uc, on="SeqID", how='inner')
 df_merge.to_csv("df_merge.csv")
 
@@ -467,7 +471,7 @@ qlist = df_merge["cutseq"].tolist()
 qdict = df_merge.to_dict('index')
 
 # query for the nearest neighbours of the first datapoint
-ids, distances = ref_index.knnQuery(qlist[0], k=1)
+ids, distances = ref_index.knnQuery(qlist[0], k=10)
 
 # Display the actual strings_KNN
 display_knn(qlist[0], ids)
@@ -521,6 +525,8 @@ df_fqdict_merge_sel.to_csv("df_fqdict_merge.csv")
 filtered_clone_data = pd.read_csv("filtered_clone_data_arr.csv",header='infer',index_col=0)
 filtered_clone_data_dict= filtered_clone_data.to_dict('index')
 
+
+# for filtered_clone_data_dict = get protein information from protein table file
 make_list=[]
 with open("Phaeobacter_inhibens_DSM_17395_ProteinTable13044_174218.txt", "r") as f:
     lines = f.readline()[1:]
@@ -560,18 +566,16 @@ with open("Phaeobacter_inhibens_DSM_17395_ProteinTable13044_174218.txt", "r") as
                 add_or_append(sdict, record, to_add)
 
 ##################
-
-
+# combined two dict based on common keys
 d1 = filtered_clone_data_dict
 d2 = sdict
-
 combined_dict = defaultdict(list)
-
 for d in (d1, d2): # you can list as many input dicts as you want here
     for key, value in d.items():
         combined_dict[key].append(value)
 
-
+####
+# From the combined dictionary, select only the information that we want in the final output file
 final_list=[]
 for key in combined_dict.keys():
         cutseq = combined_dict[key][0]['cutseq']
@@ -592,10 +596,11 @@ for key in combined_dict.keys():
             final_list.append([cutseq,ref_barcode,distance,cutseq_size,Plate_Number,
                                Clone_Number,scaffold,strand,pos,reads,gene_info])
 
-
+## Convert list to dataframe
 df_final_list = pd.DataFrame(final_list,
                             columns=["cutseq","ref_barcode","distance","cutseq_size",
                                      "Plate_Number","Clone_Number","scaffold",
                                      "strand","pos","reads","gene_info-[protein_name,locus_tag start, stop, protein_product, rb20_position]"])
 
+# save dataframe as csv
 df_final_list.to_csv("df_mapping_with_geneinfo.csv")
