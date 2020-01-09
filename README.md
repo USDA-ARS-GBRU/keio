@@ -1,5 +1,5 @@
 # Welcome to keio tutorial !!!
-These tutorials walk you through the process of analyzing illumina read for developing keio collection type results in our model organism. 
+These tutorials walk you through the process of analyzing illumina read for developing keio collection type results in our model organism: Phaeobacter_inhibens_DSM_17395. 
 
 
 # Background
@@ -19,6 +19,8 @@ Then, the Randomly Barcode Transposon are randomly inserted into bacterial genom
  
 
 <img src="https://github.com/ravinpoudel/keio/blob/master/RB_Clone.png" align="center" height="550" width="350" />
+
+More information about the RB-TnSeq and the methods is described by Wetmore et. al.(2015) (https://mbio.asm.org/content/6/3/e00306-15).
 
 
 # What we need to do in our project?
