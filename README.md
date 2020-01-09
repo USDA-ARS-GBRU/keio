@@ -11,3 +11,8 @@ Primarily, the KEIO collection provides a new molecular tool/resource to underst
 Although, creating such molecular collection / tools takes lot of resorce and daunting. Thus, here we explore and RB-TnSeq (Randomly Barcode Transposons) method to crate a single gene mutant type collection in Phaeobacter_inhibens_DSM_17395. The molecular construct of Randomly Barcode Transposons is similar follow:
 
 ![alt text](https://github.com/ravinpoudel/keio/blob/master/KEIO_mutant_summary.png)
+
+
+RbTransposon.png
+
+RB_Clone.png
