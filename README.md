@@ -10,9 +10,9 @@ The Keio collection in  Escherichia coli K-12 represents  a collection of single
 Primarily, the KEIO collection provides a new molecular tool/resource to understand the functional and physiological aspects of gene at the system levels. 
 Although, creating such molecular collection / tools takes lot of resorce and daunting. Thus, here we explore and RB-TnSeq (Randomly Barcode Transposons) method to crate a single gene mutant type collection in Phaeobacter_inhibens_DSM_17395. The molecular construct of Randomly Barcode Transposons is similar follow:
 
-![alt text](https://github.com/ravinpoudel/keio/blob/master/RbTransposon.png)
+![alt text](https://github.com/ravinpoudel/keio/blob/master/RbTransposon.png| width=100)
 
 
-![Mutant clone](https://github.com/ravinpoudel/keio/blob/master/RB_Clone.png)
+![Mutant clone](https://github.com/ravinpoudel/keio/blob/master/RB_Clone.png| width=100)
 
 
