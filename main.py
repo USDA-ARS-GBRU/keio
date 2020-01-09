@@ -1,13 +1,9 @@
 #!/usr/bin/env python
+# Author: Ravin Poudel
 """
 KEIO: A python module to process illumina reads for keio-collection type project.
 
 """
-# Author: Ravin Poudel
-
-
-#!/usr/bin/env python
-# Author: Ravin Poudel
 
 import os
 import sys
@@ -28,9 +24,9 @@ from Bio.SeqRecord import SeqRecord
 def run_vsearch(maping_fasta, reads_fasta, cluster_id=0.75):
     """ Returns mapping information
     Args:
-        input1(str): barcodefile: fasta
+            input1(str): barcodefile: fasta
             input2(str): reads: fastafile
-    input3 (int): cluster_id
+            input3 (int): cluster_id
     Returns:
         output: file: vsearch output containing alignment positon and quality
     """
@@ -83,6 +79,7 @@ def parse_vsearch(file, strand="+"):
 
 # filter the parsed vserach file based on the number of matching barcode type
 def filter_vsearch(sdict, nhits):
+    """Filter the parsed vserach file based on the number of matching barcode type"""
     outdict = {}
     for items in sdict.items():
         if len(items[1]) >= nhits:
@@ -91,6 +88,7 @@ def filter_vsearch(sdict, nhits):
 
 # Now create a dictionary with start and end position for each barcode type
 def get_randombarcode(keio_fasta, filter_vsearch_dict):
+    """Create a dictionary with start and end position for each barcode type"""
     out_dict={}
     for seq_record in SeqIO.parse(keio_fasta, "fasta"):
         if seq_record.id in filter_vsearch_dict.keys():
@@ -116,6 +114,7 @@ def get_randombarcode(keio_fasta, filter_vsearch_dict):
 
 # Just get a fasta information for random barcode.
 def randombarcode_fasta(get_randombarcode_dict):
+    """ Retrive fasta from dictionary """
     barhash = []
     for k in get_randombarcode_dict.keys():
         rb = get_randombarcode_dict[k]['cutseq']
@@ -156,7 +155,7 @@ def cluster_db(rbfasta, threads=1, cluster_id=0.9, min_seqlength=10):
 
 
 def mapR2clusterdb(fastafile, centroid_representative_fasta,cluster_id=0.9, min_seqlength=20):
-    """Map reads and the cluster centroid information"""
+    """Map reads and cluster centroid information"""
     try:
         uc_map = fastafile.split(".")[0] + ".cluster_table_mapping.uc"
         readfile = fastafile
@@ -179,6 +178,7 @@ def mapR2clusterdb(fastafile, centroid_representative_fasta,cluster_id=0.9, min_
 # use if NMSLIB
 # index the reference list
 def create_index(strings):
+    """Create a nmslib index"""
     index = nmslib.init(space='leven',
                             dtype=nmslib.DistType.INT,
                             data_type=nmslib.DataType.OBJECT_AS_STRING,
@@ -193,6 +193,7 @@ def get_knns(index, vecs):
 
 # Display the actual strings_KNN
 def display_knn(query, knn_ids_array):
+    """Display the KNN neighbours"""
     print("Query string:\n", query,"\n")
     print ("Ten nearest neighbours:\n")
     for v in ids.tolist():
@@ -201,6 +202,7 @@ def display_knn(query, knn_ids_array):
 
 ### filter based on distance
 def filter_knn_dist(qdict, mindist):
+    """Filter KNN based on distance"""
     outdict = {}
     for items in qdict.items():
          if items[1]['distance'] <= mindist:
@@ -228,6 +230,8 @@ def head_dict(dict, n):
 ################# Run steps #################
 
 ## run mappingwith each mapping fasta information
+# Here we are mapping three things: Ffasta, RCFasta, and conserved fasta
+# Using the mapped information, we will locate the random barcode sequence.
 run_vsearch("Ffasta.fasta", "merged.fasta", cluster_id=0.65) # merged fasta contain illumina reads from the experiment
 run_vsearch("RCfasta.fasta", "merged.fasta", cluster_id=0.65)
 run_vsearch("conserved.fasta", "merged.fasta", cluster_id=0.65)
@@ -463,6 +467,7 @@ df_merge.to_csv("df_merge.csv")
 # Create an index with random barcodes from reference pool data
 df_refinfo = pd.read_table("Phaeo_ML1.loconf.pool.txt", sep='\t', header='infer')
 reflist = df_refinfo['barcode']
+
 # initialize a new index
 ref_index = create_index(list(df_refinfo['barcode']))
 
@@ -544,6 +549,7 @@ with open("Phaeobacter_inhibens_DSM_17395_ProteinTable13044_174218.txt", "r") as
 
 # check if the key is in the dict, if yes append else add.
 def add_or_append(dictionary, key, value):
+    """Check if the key is in the dict, if yes append the information else add"""
     if key not in dictionary:
         dictionary[key] = []
     dictionary[key].append(value)
