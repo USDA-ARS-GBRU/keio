@@ -29,8 +29,10 @@ Our Illumina reads represent the clone library generated similarly as above desc
 ![alt text](https://github.com/ravinpoudel/keio/blob/master/keio.png)
 
 
+# Flowchart- Framework of analyses
+Script involved in each steps described in the following flowchart as available in `main.py` script file.  
 
-
+![alt text](https://github.com/ravinpoudel/keio/blob/master/Keio_Flowchart.png)
 
 
 
