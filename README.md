@@ -38,16 +38,23 @@ Script involved in each steps described in the following flowchart as available 
 
 # Final output file
 ## "df_mapping_with_geneinfo.csv"
-| 	cutseq	ref_barcode	distance	cutseq_size	Plate_Number	Clone_Number	scaffold	strand	pos	reads	gene_info-[protein_name | locus_tag start |  stop    |  protein_product |  rb20_position]                       |
-| -------------------------------------------------------------------------------------------------------------------- | --------------- | -------- | ---------------- | ------------------------------------- | ---------- | ------------------ | --------------- | ------- | ------- | ----------------------- | --------- |
-| 0	CATGAGGCAGCGTGGATAGT	CATGAGGCAGCGTGGATAGT	0	20	1	Clone-7	PGA1_c	+	627691	18	                                       |
-| 1	GGTCGACGTAGAGGGCGGGG	GGTACGCGTAGAGGGCGGTG	3	20	1	Clone-11	PGA1_c	-	3215303	36	[('WP_014881201.1'                   |  'PGA1_RS15290' |  3214836 |  3215348         |  'hypothetical protein'               |  3215303)] |
-| 2	TGTGCCAAATGCGGGGCACC	TGTGCCAAATGCGGGGCACC	0	20	1	Clone-13	PGA1_c	+	486076	55	                                      |
-| 3	GCGACAGGCAGCACTAGGTT	GCGACAGGCAGCACTAGGTT	0	20	1	Clone-15	PGA1_c	+	2307030	35	                                     |
-| 4	TTGTTCTGAGTCTAAGCAGT	TTTGTTCTGGTTCAAGCAGT	4	20	1	Clone-25	PGA1_c	-	747956	38	[('WP_014879339.1'                    |  'PGA1_RS03600' |  747173  |  748378          |  'Gfo/Idh/MocA family oxidoreductase' |  747956)]  |
-| 5	ATGATGTTAGGGATCATAGA	ATGATGTTAGGGATCATAGA	0	20	1	Clone-27	PGA1_262p	+	215693	78	[('WP_014878956.1'                 |  'PGA1_RS01155' |  215183  |  216454          |  'MFS transporter permease'           |  215693)   |  ('WP_014881826.1' |  'PGA1_RS19085' |  215123 |  215875 |  'hypothetical protein' |  215693)] |
-| 6	AAGGATGTAAGAGCTATCGA	AAGGATGTAAGAGCTATCGA	0	20	1	Clone-29	PGA1_c	-	2726842	125	[('WP_014875518.1'                  |  'PGA1_RS13000' |  2726604 |  2726861         |  'hypothetical protein'               |  2726842)] |
-| 7	GCCTTACAACCGGCTGTGCT	GCCTTACAACCGGCTGTGCT	0	20	1	Clone-30	PGA1_c	+	706052	95	[('WP_014879308.1'                    |  'PGA1_RS03405' |  705621  |  706442          |  'hypothetical protein'               |  706052)]  |
-| 8	AGGGTGCTTTGTGCCGGGGG	AGGGTGCTTTGTGCCGGGGG	0	20	1	Clone-31	PGA1_c	+	1410032	202	[('WP_014879849.1'                  |  'PGA1_RS06795' |  1409400 |  1410080         |  'hypothetical protein'               |  1410032)] |
-| 9	CCGGTCGCGGCCCGCGGGGA	CCGGTCGCGGCCCGCGGGGA	0	20	1	Clone-32	PGA1_c	-	2298573	156	[('WP_014880515.1'                  |  'PGA1_RS10980' |  2297921 |  2298847         |  'alpha/beta hydrolase'               |  2298573)] |
-| 10	CTTGTTGCGATGGGTGGAGG	GCATGGTGGATGGGTGGAGG	4	20	1	Clone-39	PGA1_c	+	3215295	15	[('WP_014881201.1'                  |  'PGA1_RS15290' |  3214836 |  3215348         |  'hypothetical protein'               |  3215295)] |
+
+|    | cutseq               | ref_barcode          | distance | cutseq_size | Plate_Number | Clone_Number | scaffold  | strand | pos     | reads | gene_info-[protein_name,locus_tag start, stop, protein_product, rb20_position]                                                                                               |
+| -- | -------------------- | -------------------- | -------- | ----------- | ------------ | ------------ | --------- | ------ | ------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0  | CATGAGGCAGCGTGGATAGT | CATGAGGCAGCGTGGATAGT | 0        | 20          | 1            | Clone-7      | PGA1_c    | +      | 627691  | 18    |                                                                                                                                                                              |
+| 1  | GGTCGACGTAGAGGGCGGGG | GGTACGCGTAGAGGGCGGTG | 3        | 20          | 1            | Clone-11     | PGA1_c    | -      | 3215303 | 36    | [('WP_014881201.1', 'PGA1_RS15290', 3214836, 3215348, 'hypothetical protein', 3215303)]                                                                                      |
+| 2  | TGTGCCAAATGCGGGGCACC | TGTGCCAAATGCGGGGCACC | 0        | 20          | 1            | Clone-13     | PGA1_c    | +      | 486076  | 55    |                                                                                                                                                                              |
+| 3  | GCGACAGGCAGCACTAGGTT | GCGACAGGCAGCACTAGGTT | 0        | 20          | 1            | Clone-15     | PGA1_c    | +      | 2307030 | 35    |                                                                                                                                                                              |
+| 4  | TTGTTCTGAGTCTAAGCAGT | TTTGTTCTGGTTCAAGCAGT | 4        | 20          | 1            | Clone-25     | PGA1_c    | -      | 747956  | 38    | [('WP_014879339.1', 'PGA1_RS03600', 747173, 748378, 'Gfo/Idh/MocA family oxidoreductase', 747956)]                                                                           |
+| 5  | ATGATGTTAGGGATCATAGA | ATGATGTTAGGGATCATAGA | 0        | 20          | 1            | Clone-27     | PGA1_262p | +      | 215693  | 78    | [('WP_014878956.1', 'PGA1_RS01155', 215183, 216454, 'MFS transporter permease', 215693), ('WP_014881826.1', 'PGA1_RS19085', 215123, 215875, 'hypothetical protein', 215693)] |
+| 6  | AAGGATGTAAGAGCTATCGA | AAGGATGTAAGAGCTATCGA | 0        | 20          | 1            | Clone-29     | PGA1_c    | -      | 2726842 | 125   | [('WP_014875518.1', 'PGA1_RS13000', 2726604, 2726861, 'hypothetical protein', 2726842)]                                                                                      |
+| 7  | GCCTTACAACCGGCTGTGCT | GCCTTACAACCGGCTGTGCT | 0        | 20          | 1            | Clone-30     | PGA1_c    | +      | 706052  | 95    | [('WP_014879308.1', 'PGA1_RS03405', 705621, 706442, 'hypothetical protein', 706052)]                                                                                         |
+| 8  | AGGGTGCTTTGTGCCGGGGG | AGGGTGCTTTGTGCCGGGGG | 0        | 20          | 1            | Clone-31     | PGA1_c    | +      | 1410032 | 202   | [('WP_014879849.1', 'PGA1_RS06795', 1409400, 1410080, 'hypothetical protein', 1410032)]                                                                                      |
+| 9  | CCGGTCGCGGCCCGCGGGGA | CCGGTCGCGGCCCGCGGGGA | 0        | 20          | 1            | Clone-32     | PGA1_c    | -      | 2298573 | 156   | [('WP_014880515.1', 'PGA1_RS10980', 2297921, 2298847, 'alpha/beta hydrolase', 2298573)]                                                                                      |
+| 10 | CTTGTTGCGATGGGTGGAGG | GCATGGTGGATGGGTGGAGG | 4        | 20          | 1            | Clone-39     | PGA1_c    | +      | 3215295 | 15    | [('WP_014881201.1', 'PGA1_RS15290', 3214836, 3215348, 'hypothetical protein', 3215295)]                                                                                      |
+
+
+
+
+
+
