@@ -378,10 +378,6 @@ df_merge.to_csv("df_merge.csv")
 # write.csv(combine_missing_clone,"missing_clone.csv")
 #
 #
-# #########3 all vs all
-# all <- read.delim("blast.out", header = FALSE)
-#
-#
 # ## plot by plate
 # combine_missing_clone %>%
 #   group_by(Plate_Number) %>%
