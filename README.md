@@ -37,7 +37,8 @@ Script involved in each steps described in the following flowchart as available 
 
 
 # Final output file
-## "df_mapping_with_geneinfo.csv"
+
+`df_mapping_with_geneinfo.csv` has the final output. Following table shows first 11 rows of the output table. 
 
 |    | cutseq               | ref_barcode          | distance | cutseq_size | Plate_Number | Clone_Number | scaffold  | strand | pos     | reads | gene_info-[protein_name,locus_tag start, stop, protein_product, rb20_position]                                                                                               |
 | -- | -------------------- | -------------------- | -------- | ----------- | ------------ | ------------ | --------- | ------ | ------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +55,18 @@ Script involved in each steps described in the following flowchart as available 
 | 10 | CTTGTTGCGATGGGTGGAGG | GCATGGTGGATGGGTGGAGG | 4        | 20          | 1            | Clone-39     | PGA1_c    | +      | 3215295 | 15    | [('WP_014881201.1', 'PGA1_RS15290', 3214836, 3215348, 'hypothetical protein', 3215295)]                                                                                      |
 
 
+### Legend for the output
 
-
-
-
+| Column Header                                                               | Information                                                                    |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| cutseq                                                                      | random barcode from this analyses                                              |
+| ref_barcode                                                                 | random barcode present in "Phaeo_ML1.loconf.pool.txt"                          |
+| distance                                                                    | leven distance; based on KNN (NMSLIB)                                          |
+| cutseq_size                                                                 | size of random barcode                                                         |
+| Plate_Number                                                                | Plate from where the clone was selected                                        |
+| Clone_Number                                                                | Specific clone number in a provided Plate_Number                               |
+| scaffold                                                                    | information from "Phaeo_ML1.loconf.pool.txt"                                   |
+| strand                                                                      | + / "-"                                                                        |
+| pos                                                                         | start position of gene                                                         |
+| reads                                                                       | Total number of reads with the given cutseq observed in the current experiment |
+| gene_info-[protein_name;locus_tag;start;stop;protein_product;rb20_position] | additional information                                                         |
