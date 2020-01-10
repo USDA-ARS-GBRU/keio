@@ -38,8 +38,6 @@ Script involved in each steps described in the following flowchart as available 
 
 # Final output file
 ## "df_mapping_with_geneinfo.csv"
-
-
 | 	cutseq	ref_barcode	distance	cutseq_size	Plate_Number	Clone_Number	scaffold	strand	pos	reads	gene_info-[protein_name | locus_tag start |  stop    |  protein_product |  rb20_position]                       |
 | -------------------------------------------------------------------------------------------------------------------- | --------------- | -------- | ---------------- | ------------------------------------- | ---------- | ------------------ | --------------- | ------- | ------- | ----------------------- | --------- |
 | 0	CATGAGGCAGCGTGGATAGT	CATGAGGCAGCGTGGATAGT	0	20	1	Clone-7	PGA1_c	+	627691	18	                                       |
@@ -53,11 +51,3 @@ Script involved in each steps described in the following flowchart as available 
 | 8	AGGGTGCTTTGTGCCGGGGG	AGGGTGCTTTGTGCCGGGGG	0	20	1	Clone-31	PGA1_c	+	1410032	202	[('WP_014879849.1'                  |  'PGA1_RS06795' |  1409400 |  1410080         |  'hypothetical protein'               |  1410032)] |
 | 9	CCGGTCGCGGCCCGCGGGGA	CCGGTCGCGGCCCGCGGGGA	0	20	1	Clone-32	PGA1_c	-	2298573	156	[('WP_014880515.1'                  |  'PGA1_RS10980' |  2297921 |  2298847         |  'alpha/beta hydrolase'               |  2298573)] |
 | 10	CTTGTTGCGATGGGTGGAGG	GCATGGTGGATGGGTGGAGG	4	20	1	Clone-39	PGA1_c	+	3215295	15	[('WP_014881201.1'                  |  'PGA1_RS15290' |  3214836 |  3215348         |  'hypothetical protein'               |  3215295)] |
-
-
-
-
-
-
-
-
