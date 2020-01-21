@@ -1,21 +1,23 @@
-# Welcome to keio tutorial !!!
-These tutorials walk you through the process of analyzing illumina read for developing keio collection type results in our model organism: Phaeobacter_inhibens_DSM_17395. 
+# Welcome to Keio tutorial !!!
+This tutorial walks you through the process of analyzing illumina read for developing Keio collection type results in our model organism: Phaeobacter_inhibens_DSM_17395. 
 
 
 # Background
 
-The Keio collection in  Escherichia coli K-12 represents  a collection of single-gene deleted mutants. This collection was created manually one by one by replacing the predicted ORF with a kanamycin cassette to inactivate chromosomal genes. Then primers were designed to create in-frame deletions upon excision of the resistance cassette. Of 4288 genes targeted, 3985 mutants were obtained. Majority of these mutants represents mutation of non-essential genes. Summary table of mutant from the Keio collection (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1681482/pdf/msb4100050.pdf).
+# Background
+The Keio collection in Escherichia coli K-12 represents a collection of single-gene deleted mutants. This collection was created manually one by one by replacing the predicted ORF with a kanamycin cassette to inactivate chromosomal genes. Then primers were designed to create in-frame deletions upon excision of the resistance cassette. Of 4288 genes targeted, 3985 mutants were obtained. Majority of these mutants represents mutation of non-essential genes. Summary table of mutant from the Keio collection.
+
+(https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1681482/pdf/msb4100050.pdf).
 
 ![alt text](https://github.com/ravinpoudel/keio/blob/master/KEIO_mutant_summary.png)
 
 
-Primarily,the KEIO collection provides a new molecular tool/resource to understand the functional and physiological aspects of gene at the system levels. 
-Although, creating such molecular collection / tools takes lot of resorce and time. Thus, here we explore and RB-TnSeq (Randomly Barcode Transposons) method to crate a single gene mutant type collection in Phaeobacter_inhibens_DSM_17395. The molecular construct of Randomly Barcode Transposon is similar as follow:
+Primarily, the Keio collection provides a molecular tool/resource to understand the functional and physiological aspects of gene at the system levels. Although, creating such molecular collection / tools takes lot of resources and time. Thus, here we explored RB-TnSeq (Randomly Barcode Transposons) method to create a single gene mutant type collection in Phaeobacter_inhibens_DSM_17395. The molecular construct of Randomly Barcode Transposon is similar as follow:
 
 <img src="https://github.com/ravinpoudel/keio/blob/master/RbTransposon.png" align="center" height="550" width="350"/>
  
 
-Then, the Randomly Barcode Transposon are randomly inserted into bacterial genome to create mutated clone. Each clone therotically should represent a single gene mutation. 
+Once the Randomly Barcode Transposons are created, the constructs are randomly inserted into bacterial genome to create mutated clone. Each clone theoretically should represent a single gene mutation. 
  
 
 <img src="https://github.com/ravinpoudel/keio/blob/master/RB_Clone.png" align="center" height="550" width="350" />
@@ -24,13 +26,13 @@ More information about the RB-TnSeq and the methods is described by Wetmore et. 
 
 
 # What we need to do in our project?
-Our Illumina reads represent the clone library generated as above described methods. Now, we need to map the location of random barcode sequence (about 20 base pairin lengths). Following diagram repsent the construct for each reads:
+Our Illumina reads represent the clone library as generated with the above described methods. Now, we need to map the location of random barcode sequence (about 20 base pair in lengths). Following diagram shows the construct for each read:
 
 ![alt text](https://github.com/ravinpoudel/keio/blob/master/keio.png)
 
 
 # Flowchart- Framework of analyses
-Script involved in each steps described in the following flowchart, and also available in `main.py` script file.  
+Script involved in each step is described in the following flowchart, and also available in `main.py` script file.  
 
 ![alt text](https://github.com/ravinpoudel/keio/blob/master/Keio_Flowchart.png)
 
