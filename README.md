@@ -5,9 +5,7 @@ This tutorial walks you through the process of analyzing illumina read for devel
 # Background
 
 # Background
-The Keio collection in Escherichia coli K-12 represents a collection of single-gene deleted mutants. This collection was created manually one by one by replacing the predicted ORF with a kanamycin cassette to inactivate chromosomal genes. Then primers were designed to create in-frame deletions upon excision of the resistance cassette. Of 4288 genes targeted, 3985 mutants were obtained. Majority of these mutants represents mutation of non-essential genes. Summary table of mutant from the Keio collection.
-
-(https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1681482/pdf/msb4100050.pdf).
+The Keio collection in Escherichia coli K-12 represents a collection of single-gene deleted mutants. This collection was created manually one by one by replacing the predicted ORF with a kanamycin cassette to inactivate chromosomal genes. Then primers were designed to create in-frame deletions upon excision of the resistance cassette. Of 4288 genes targeted, 3985 mutants were obtained. Majority of these mutants represents mutation of non-essential genes. Summary table of mutant from the Keio collection (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1681482/pdf/msb4100050.pdf).
 
 ![alt text](https://github.com/ravinpoudel/keio/blob/master/KEIO_mutant_summary.png)
 
