@@ -21,7 +21,7 @@ from collections import defaultdict
 from Bio.SeqRecord import SeqRecord
 
 
-def run_vsearch(maping_fasta, reads_fasta, cluster_id=0.75):
+def run_vsearch(maping_fasta, reads_fasta, cluster_id=0.75, minseq_length=10):
     """ Returns mapping information
     Args:
             input1(str): barcodefile: fasta
@@ -33,7 +33,7 @@ def run_vsearch(maping_fasta, reads_fasta, cluster_id=0.75):
     try:
         out_info = 'query+target+ql+tl+id+tcov+qcov+ids+gaps+qrow+trow+id4+qilo+qihi+qstrand+tstrand'
         outputfile = maping_fasta.split(".")[0] + "__output.txt"
-        parameters = ["vsearch", "--usearch_global", reads_fasta, "--db", maping_fasta, "--id", str(cluster_id), "--userfield", out_info, "--strand", "plus", "--userout", outputfile]
+        parameters = ["vsearch", "--usearch_global", reads_fasta, "--db", maping_fasta, "--id", str(cluster_id),"--minseqlength",str(minseq_length), "--userfield", out_info, "--strand", "plus", "--userout", outputfile]
         p0 = subprocess.run(parameters, stderr=subprocess.PIPE)
         print(p0.stderr.decode('utf-8'))
     except subprocess.CalledProcessError as e:
